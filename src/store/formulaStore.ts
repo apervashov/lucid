@@ -63,7 +63,9 @@ export const useFormulaStore = create<FormulaState>((set, get) => ({
     let formulaString = '';
     
     for (const varName in dummyVariables) {
-      formulaString += `var ${varName} = ${dummyVariables[varName]}; `;
+      if (Object.prototype.hasOwnProperty.call(dummyVariables, varName)) {
+        formulaString += `var ${varName} = ${dummyVariables[varName]}; `;
+      }
     }
     
     formulaString += 'return ' + tags.map(tag => {

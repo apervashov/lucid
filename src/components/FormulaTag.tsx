@@ -61,6 +61,7 @@ export const FormulaTag: React.FC<FormulaTagProps> = ({ tag, index }) => {
   };
 
   const handleSelectSuggestion = (suggestion: SuggestionItem) => {
+    console.log("Selected suggestion:", suggestion);
     setIsDropdownOpen(false);
   };
 
