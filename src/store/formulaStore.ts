@@ -51,7 +51,7 @@ export const useFormulaStore = create<FormulaState>((set, get) => ({
   calculateFormula: () => {
     const { tags } = get();
     
-    const dummyVariables = {
+    const dummyVariables: Record<string, number> = {
       x: 10,
       y: 5,
       z: 3,
@@ -64,7 +64,7 @@ export const useFormulaStore = create<FormulaState>((set, get) => ({
     
     for (const varName in dummyVariables) {
       if (Object.prototype.hasOwnProperty.call(dummyVariables, varName)) {
-        formulaString += `var ${varName} = ${dummyVariables[varName]}; `;
+        formulaString += `var ${varName} = ${dummyVariables[varName as keyof typeof dummyVariables]}; `;
       }
     }
     
